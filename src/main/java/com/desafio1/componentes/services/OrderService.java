@@ -1,9 +1,18 @@
 package com.desafio1.componentes.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.desafio1.componentes.entities.Order;
+
+@Service
 public class OrderService {
 	
-	public double total(double amount) {
-		return amount;
+	@Autowired
+	private ShippingService shippingService;
+	
+	public double total(Order order) {
+		return ((order.getBasic()) - (order.getBasic() * (order.getDiscount() / 100)) + shippingService.shipment(order));
 	}
 
 }

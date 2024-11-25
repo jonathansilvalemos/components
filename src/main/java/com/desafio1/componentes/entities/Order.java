@@ -40,7 +40,4 @@ public class Order {
 		this.discount = discount;
 	}
 	
-	
-	
-	
 }
